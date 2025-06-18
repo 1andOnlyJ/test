@@ -1,0 +1,318 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column; 
+}
+
+header.navbar-container {
+    position:sticky;
+    top: 0;
+    width: 100%;
+    background-color: #ffff;
+    max-width: 1200px; /* Batasi lebar maksimum header */
+    padding-block: 1rem; /* Padding atas dan bawah */
+    margin-inline: auto; /* Pusatkan header secara horizontal */
+    display: flex;
+    justify-content: space-between; /* Mengatur logo di kiri dan nav di kanan, dengan ruang di antaranya */
+    align-items: center; /* Pusatkan item secara vertikal */
+    z-index: 9999; /* Pastikan navbar di atas elemen lain */
+    /* background-color: #f8f8f8; /* Opsional: beri warna latar belakang untuk melihat batasan */
+}
+
+header.navbar-container .logo img {
+    width: 150px; /* Atur lebar logo */
+}
+
+header.navbar-container .nav-list ul {
+    padding-left: 0; /* Hapus padding default untuk ul */
+    display: flex;
+    justify-content: center; /* Pusatkan item nav */
+    gap: 1.5rem; /* Spasi antar item nav */
+}
+
+header.navbar-container .nav-list li {
+    list-style-type: none; /* Hapus bullet point daftar */
+}
+
+header.navbar-container .nav-list li a {
+    padding: 0.5rem 1.5rem; /* Padding tautan */
+    border-radius: 999px; /* Bentuk pil untuk tautan */
+    text-decoration: none; /* Hapus garis bawah tautan */
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: black; /* Warna teks default */
+    transition: all 0.2s ease-in-out; /* Efek transisi saat hover */
+}
+
+header.navbar-container .nav-list li:hover a {
+    background-color: #D42F41; /* Warna latar belakang saat hover */
+    color: white; /* Warna teks saat hover */
+}
+
+/* Main Content Styles */
+main {
+    flex: 1;
+    max-width: 1300px;
+    margin: auto;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column; /* ⬅️ supaya .content ditumpuk ke bawah */
+    gap: 4rem; /* kasih jarak antar .content */
+    align-items: center;
+}
+
+main .content {
+    width: 100%; /* ⬅️ penting: supaya tiap .content ambil full width dan tidak mepet */
+    display: flex;
+    gap: 2rem;
+    flex-direction: row;
+    align-items: flex-start; /* Pusatkan item secara vertikal */
+    justify-content: space-between;
+    margin-bottom: 0.1rem;
+    flex-wrap: wrap; /* ⬅️ jaga-jaga kalau layarnya kecil */
+}
+
+/* Content Description Styles */
+main .content .content-description {
+    /* Mengurangi flex-basis agar ada lebih banyak ruang untuk gambar di sampingnya */
+    flex: 1 1 400px; /* Diubah dari 500px. Akan tumbuh, menyusut, dengan lebar dasar 400px. */
+    min-width: 280px; /* Pastikan tidak terlalu kecil */
+}
+
+main .content .content-description .title {
+    font-size: 2.5rem; /* Ukuran font default untuk judul */
+    margin-bottom: 1rem; /* Spasi bawah judul */
+}
+
+main .content .content-description p {
+    /* --- INI BAGIAN YANG DIUBAH UNTUK FONT DESKRIPSI --- */
+    font-size: 1rem; /* Mengurangi ukuran font default untuk paragraf */
+    line-height: 1.7rem;
+    text-align: justify; /* Justifikasi teks */
+    margin-bottom: 2rem; /* Spasi bawah paragraf */
+    /*max-width: 650px; /* Opsional: Batasi lebar maksimum paragraf untuk readability */
+}
+
+/* Button Styles (CTA) */
+main .content .content-description button {
+    padding: 0.8rem 2.5rem;
+    border-radius: 999px;
+    background-color: #F1D74D;
+    color: #211F1F;
+    font-weight: 700;
+    cursor: pointer;
+    border: 3px solid transparent; /* Tambahkan border transparan agar tidak "loncat" saat hover */
+    transition: all 0.2s ease-in-out; /* Tambahkan transisi untuk efek hover */
+}
+
+main .content .content-description button:hover {
+    /* --- PERUBAHAN DI SINI --- */
+    background-color: #CDB741; /* Warna latar belakang saat hover menjadi #CDB741 */
+    /* --- AKHIR PERUBAHAN --- */
+
+    color: #2d3e50;
+    border-color: #CDB741;
+}
+
+
+/* Content Image Styles */
+main .content .content-image {
+    /* Mengurangi flex-basis agar ada lebih banyak ruang untuk teks di sampingnya */
+    flex: 1 1 300px; /* Diubah dari 400px. Akan tumbuh, menyusut, dengan lebar dasar 300px. */
+    display: flex; /* Jadikan kontainer gambar sebagai flex untuk menengahkan gambar di dalamnya */
+    justify-content: center; /* Pusatkan gambar secara horizontal */
+    align-items: center; /* Pusatkan gambar secara vertikal */
+}
+
+main .content .content-image img {
+    width: 100%; /* Memastikan gambar mengisi 100% dari parent-nya (.content-image) */
+    max-width: 400px; /* Batasi lebar maksimum gambar agar tidak terlalu besar */
+    min-width: 150px; /* Batasi lebar minimum gambar */
+    height: auto; /* Pertahankan rasio aspek */
+    display: block; /* Penting untuk margin: auto dan untuk menghindari spasi bawah gambar */
+    object-fit: contain; /* Memastikan gambar terlihat sepenuhnya dalam bingkainya */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem 2rem; /* Kurangi padding pada layar kecil */
+    }
+    /* Sesuaikan flex-basis untuk menjaga layout sejajar */
+    main .content .content-description {
+        flex-basis: 50%; /* Contoh: Beri setengah lebar */
+        min-width: unset; /* Izinkan menyusut lebih banyak */
+    }
+    main .content .content-image {
+        flex-basis: 40%; /* Contoh: Beri 40% lebar */
+    }
+
+    main .content .content-description .title {
+        font-size: 2rem; /* Ukuran font untuk judul pada layar 768px ke bawah */
+        margin-bottom: 1rem;
+    }
+
+    main .content .content-description p {
+        /* --- INI JUGA DIUBAH UNTUK FONT DESKRIPSI MOBILE --- */
+        font-size: 0.85rem; /* Mengurangi ukuran paragraf di mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    header.navbar-container .nav-list ul {
+        flex-direction: column; /* Ubah navbar list menjadi kolom */
+        gap: 0.5rem; /* Kurangi spasi */
+    }
+}
+main .content .image-container {
+    width: 90%;
+    padding: 20px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap; /* biar responsif kalau layarnya kecil */
+    gap: 20px; /* beri jarak antar box */
+}
+
+main .box {
+    width: 300px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 1s;
+    text-align: center; /* ⬅️ Biar teks di tengah horizontal */
+    padding-bottom: 10px; /* Biar ada ruang di bawah tulisan */
+}
+
+main .box img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+main .box:hover{
+    transform: scale(1.08);
+    z-index:2;
+}
+
+main .box .car-name {
+  font-weight: bold;       /* ⬅️ Tebalkan tulisan */
+  font-size: 1.1rem;       /* ⬅️ (Opsional) Biar lebih enak dibaca */
+  margin-top: 10px;        /* ⬅️ Spasi dari gambar */
+  color: #333;             /* ⬅️ (Opsional) Warna tulisan */
+}
+
+.review .box .stars i {
+  color: #FFD700; /* Warna emas */
+  font-size: 1.2rem;
+  margin-right: 2px; /* (Opsional) kasih jarak antar bintang */
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center semua isi section secara horizontal */
+  padding: 2rem;
+}
+
+.review .heading {
+  text-align: center;
+  background-color: rgba(44, 132, 199, 0.1);
+  padding: 1rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  display: block;     /* full width */
+  width: 100%;        /* pastikan lebar penuh */
+}
+
+
+.review .heading span {
+  color: #2C84C7; /* Warna biru solid untuk kata "Review" */
+  font-weight: bold;
+}
+
+.review .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.review .box-container .box{
+    width: 300px;              /* Ukuran tetap */
+    height: 300px;             /* Sama seperti width biar kotak */
+    box-shadow: 0 .5rem 1.5rem rgba(0,0,0, .1);
+    border-radius: 10px;       /* Biar mirip box koleksi */
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+
+.review .box-container .box .user {
+  display: flex;
+  flex-direction: column;      /* Bikin elemen anak menumpuk ke bawah */
+  align-items: center;         /* Tengah secara horizontal */
+  justify-content: center;
+  padding-top: 2rem;
+  text-align: center;          /* Biar nama & role juga center */
+}
+
+
+.review .box-container .box .user img{
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right:  1rem;
+}
+
+.review .box-container .box .user h3{
+    font-size: 2rem;
+    color:#333
+}
+
+.review .box-container .box .user h3{
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.review .box-container .box .user h3{
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.review .box-container .box .user h3{
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Membungkus konten utama dan aside */
+.content-wrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  align-items: flex-start;
+}
+
+/* Bagian utama */
+.main {
+  flex: 3;
+}
+
+/* Fun Fact Aside */
